@@ -1,0 +1,73 @@
+site_name: Advanced Course in Earth Sciences IIa
+site_description: 岡山大学 集中講義「CLIによる空間データ処理の基礎とワークフロー設計」
+site_author: 岩崎亘典
+site_url: https://toridai-gis-lab.github.io/Advanced-Course-in-Earth-Sciences-IIa/
+repo_url: https://github.com/Toridai-GIS-Lab/Advanced-Course-in-Earth-Sciences-IIa
+docs_dir: docs
+copyright: "&copy; 2026 Nobusuke Iwasaki / The Unlicense"
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.footer
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - content.tabs.link
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: teal
+      toggle:
+        icon: material/weather-night
+        name: ダークモード
+    - scheme: slate
+      primary: teal
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモード
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 授業の基本:
+      - はじめに: index.md
+      - 過程が残る道具を使う: process.md
+      - 環境構築: setup.md
+      - 配布データ: data.md
+      - コマンド早見表: cheatsheet.md
+  - 1日目 CLIによる空間データ処理の基礎:
+      - 1. オリエンテーション: day1/01-orientation.md
+      - 2. 環境構築・基本操作: day1/02-basics.md
+      - 3. ラスタ・ベクタ処理の基本: day1/03-processing.md
+      - 4. ミニ演習: day1/04-exercise.md
+  - 2日目 ワークフロー設計と研究応用:
+      - 5. コマンドの連結とバッチ処理: day2/05-batch.md
+      - 6. 再現可能なワークフローとは: day2/06-reproducibility.md
+      - 7. 小規模プロジェクト演習: day2/07-project.md
+      - 8. 研究接続ディスカッション: day2/08-discussion.md
+      - 9. まとめ: day2/09-summary.md
