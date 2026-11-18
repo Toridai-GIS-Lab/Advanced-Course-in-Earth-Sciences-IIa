@@ -7,7 +7,7 @@
 
 | 道具 | 用途 | 確認コマンド |
 |------|------|--------------|
-| GDAL 3.10 以上（3.11 以上推奨） | 空間データ処理 | `gdalinfo --version` |
+| GDAL 3.13 以上 | 空間データ処理（`gdal` コマンド） | `gdal --version` |
 | bash 系シェル | コマンド実行、スクリプト | `echo $SHELL` |
 | jq | JSON の整形・抽出 | `jq --version` |
 | Git | 履歴の記録 | `git --version` |
@@ -22,7 +22,7 @@
 3. 起動したら、下部のターミナルで確認
 
 ```bash
-gdalinfo --version
+gdal --version
 ```
 
 !!! note
@@ -40,7 +40,7 @@ gdalinfo --version
     3. Miniforge Prompt で以下を実行
 
     ```bash
-    conda create -n cligis -c conda-forge gdal jq
+    conda create -n cligis -c conda-forge "gdal>=3.13" jq
     conda activate cligis
     ```
 
@@ -53,15 +53,15 @@ gdalinfo --version
 
     ```bash
     # Miniforge をインストール後
-    conda create -n cligis -c conda-forge gdal jq
+    conda create -n cligis -c conda-forge "gdal>=3.13" jq
     conda activate cligis
-    gdalinfo --version
+    gdal --version
     ```
 
 ## C. Docker
 
 ```bash
-docker run --rm -it -v "$PWD":/work -w /work ghcr.io/osgeo/gdal:ubuntu-small-latest bash
+docker run --rm -it -v "$PWD":/work -w /work ghcr.io/osgeo/gdal:ubuntu-small-3.13.3 bash
 ```
 
 ## 動作確認
@@ -69,9 +69,14 @@ docker run --rm -it -v "$PWD":/work -w /work ghcr.io/osgeo/gdal:ubuntu-small-lat
 以下がすべてエラーなく表示されれば準備完了です。
 
 ```bash
-gdalinfo --version
-ogrinfo --formats | head
-gdal --version     # GDAL 3.11 以上のみ。エラーでも1日目は問題なし
+gdal --version              # GDAL 3.13 以上
+gdal raster zonal-stats --help | head -3
 jq --version
 git --version
 ```
+
+!!! warning "GDAL のバージョンについて"
+    この講義の `gdal` コマンドは GDAL 3.11 で導入され、その後のバージョンで操作が次々に追加されています。
+    資料のコマンドは **GDAL 3.13.3 で動作確認** しています。QGIS に同梱されている GDAL は古い場合があるので、必ず `gdal --version` で確認してください。
+
+    なお `gdal` コマンドは現時点で「暫定提供」の扱いで、将来のバージョンでオプション名が変わる可能性があります。迷ったら `--help` が正解です。

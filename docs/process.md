@@ -24,9 +24,11 @@
 === "CLIの道"
 
     ```bash
-    gdalwarp -t_srs EPSG:6673 -r bilinear \
-      -cutline okayama.gpkg -crop_to_cutline \
-      dem.tif dem_okayama_6673.tif
+    gdal raster pipeline \
+      read dem.tif ! \
+      reproject -d EPSG:6673 -r bilinear ! \
+      clip --like okayama.gpkg ! \
+      write dem_okayama_6673.tif
     ```
 
     結果の地図と、**それを作った手順そのもの** が残ります。
@@ -88,7 +90,7 @@ AIが書いたコマンドもスクリプトファイルに保存し、自分で
 ## 誤解しないでほしいこと
 
 - **GUIが悪いわけではありません。** データを眺める、結果を目で確認する、地図を仕上げる――こうした作業はGUIの方が得意です。この講義でもQGISを使います。
-- **GUIでも過程は残せます。** QGISの処理履歴には、実行したGDALコマンドが記録されています。モデルデザイナで手順を保存することもできます。大事なのは道具の種類ではなく、手順を渡せる形で残すことです。
+- **GUIでも過程は残せます。** QGISのプロセシング履歴には、実行したGDALコマンドが記録されています。モデルデザイナで手順を保存することもできます。大事なのは道具の種類ではなく、手順を渡せる形で残すことです。
 - **全部をCLIでやる必要はありません。** 探索はGUI、確定した処理はCLI、という使い分けが現実的です。
 
 ## この講義では、ここに出てきます

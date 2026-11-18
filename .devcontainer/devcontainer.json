@@ -1,6 +1,6 @@
 {
   "name": "cli-gis",
-  "image": "ghcr.io/osgeo/gdal:ubuntu-small-latest",
-  "postCreateCommand": "apt-get update && apt-get install -y --no-install-recommends jq git && gdalinfo --version",
+  "image": "ghcr.io/osgeo/gdal:ubuntu-small-3.13.3",
+  "postCreateCommand": "apt-get update && apt-get install -y --no-install-recommends jq git && gdal --version",
   "remoteUser": "root"
 }

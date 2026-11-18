@@ -21,25 +21,28 @@ CLIで覚えた GDAL は、そのまま Python や R から使えます。**同�
     from osgeo import gdal
     gdal.UseExceptions()
 
-    # 従来コマンドと同じ指定
-    gdal.Warp("dem_6673.tif", "dem.tif", dstSRS="EPSG:6673", resampleAlg="bilinear")
+    # CLI の `gdal raster reproject -d EPSG:6673 -r bilinear in.tif out.tif` と同じ
+    # （オプション名のハイフンはアンダースコアに置き換える）
+    gdal.Run("raster", "reproject",
+             input="dem.tif", output="dem_6673.tif",
+             output_crs="EPSG:6673", resampling="bilinear")
 
-    # 新CLIと同じ指定（GDAL 3.11+）
-    gdal.Run(["raster", "reproject"], input="dem.tif", output="dem_6673.tif",
-             dst_crs="EPSG:6673")
+    # 結果を辞書として受け取る
+    info = gdal.Run("raster", "info", input="dem_6673.tif", stats=True).Output()
+    print(info["bands"][0]["mean"])
     ```
 
 === "R"
 
     ```r
-    library(terra)
+    library(terra)          # terra も内部で GDAL を使っている
     dem <- rast("dem.tif")
     dem_6673 <- project(dem, "EPSG:6673", method = "bilinear")
     writeRaster(dem_6673, "dem_6673.tif")
 
-    # sf / terra には GDAL のコマンドを直接呼ぶ関数もある
-    sf::gdal_utils("warp", "dem.tif", "dem_6673.tif",
-                   options = c("-t_srs", "EPSG:6673", "-r", "bilinear"))
+    # gdal コマンドそのものを R から呼ぶこともできる
+    system2("gdal", c("raster", "reproject", "-d", "EPSG:6673",
+                      "-r", "bilinear", "dem.tif", "dem_6673.tif"))
     ```
 
 使い分けの目安：
@@ -68,7 +71,7 @@ flowchart LR
 
 ```bash
 # 例：クラウド上のDEMから、必要な範囲だけ切り出す（ダウンロード不要）
-gdal_translate -projwin 133.8 34.8 134.0 34.6 \
+gdal raster clip --bbox 133.8,34.6,134.0,34.8 \
   /vsicurl/https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N34_00_E133_00_DEM/Copernicus_DSM_COG_10_N34_00_E133_00_DEM.tif \
   data/work/okayama_city_dem.tif
 ```

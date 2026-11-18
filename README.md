@@ -26,4 +26,11 @@ mkdocs serve
 
 ## ライセンス
 
-本リポジトリの内容は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja) で提供する。
+| 対象 | ライセンス |
+|------|------------|
+| 文章・図（`docs/` 内の解説文など） | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)（`LICENSE`） |
+| コード（コマンド例、`scripts/` 内のスクリプト、設定ファイル） | [The Unlicense](https://unlicense.org/)（`LICENSE-CODE`） |
+
+資料中のコマンド例やスクリプトの多くは、GDAL などの道具の標準的な使い方を並べたものであり、著作物には当たらないと考えています。
+ただし、その判断は個々のケースで異なりうるため、権利関係で利用をためらうことがないよう、コード部分は The Unlicense によりパブリックドメインに提供します。
+クレジット表示なしで、自由にコピー・改変・再利用してください。

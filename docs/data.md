@@ -30,7 +30,7 @@ data/
 Copernicus DEM は COG（Cloud Optimized GeoTIFF）でクラウド上に公開されており、**ダウンロードせずに** GDAL で読めます。
 
 ```bash
-gdalinfo /vsicurl/https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N34_00_E133_00_DEM/Copernicus_DSM_COG_10_N34_00_E133_00_DEM.tif
+gdal raster info /vsicurl/https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N34_00_E133_00_DEM/Copernicus_DSM_COG_10_N34_00_E133_00_DEM.tif
 ```
 
 <!-- TODO: URL・タイル名は講義前に要確認 -->

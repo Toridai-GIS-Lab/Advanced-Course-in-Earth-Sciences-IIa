@@ -4,7 +4,7 @@ site_author: 岩崎亘典
 site_url: https://toridai-gis-lab.github.io/Advanced-Course-in-Earth-Sciences-IIa/
 repo_url: https://github.com/Toridai-GIS-Lab/Advanced-Course-in-Earth-Sciences-IIa
 docs_dir: docs
-copyright: "&copy; 2026 Nobusuke Iwasaki / <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\">CC BY 4.0</a>"
+copyright: "&copy; 2026 Nobusuke Iwasaki / 文章: <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\">CC BY 4.0</a> / コード: <a href=\"https://unlicense.org/\">The Unlicense</a>"
 
 theme:
   name: material
@@ -43,6 +43,9 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

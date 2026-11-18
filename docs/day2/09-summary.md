@@ -14,7 +14,7 @@
 
 ```mermaid
 flowchart LR
-  A["確かめる<br>ogrinfo / gdalinfo"] --> B["処理する<br>ogr2ogr / gdalwarp"] --> C["つなぐ<br>パイプ・スクリプト"] --> D["繰り返す<br>for ループ"] --> E["残す<br>run_all.sh・Git"]
+  A["確かめる<br>gdal … info"] --> B["処理する<br>gdal … reproject / clip"] --> C["つなぐ<br>| と ! ・スクリプト"] --> D["繰り返す<br>for ループ"] --> E["残す<br>run_all.sh・Git"]
 ```
 
 ## もう一度、判定基準

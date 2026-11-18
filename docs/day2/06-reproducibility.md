@@ -66,7 +66,7 @@ my-project/
 ### 環境の記録
 
 ```bash
-gdalinfo --version > data/output/env.txt
+gdal --version > data/output/env.txt
 conda env export --from-history > environment.yml
 ```
 

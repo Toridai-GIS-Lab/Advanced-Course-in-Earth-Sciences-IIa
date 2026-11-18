@@ -15,21 +15,22 @@
 
     **問い：** 岡山県の市町村のうち、急傾斜地の割合が高いのはどこか？
 
-    - ヒント：`gdaldem slope` → `gdal_calc.py` で閾値処理 → 市町村ごとに集計
+    - ヒント：`gdal raster slope` → `gdal raster calc`（または `reclassify`）で閾値処理 → `gdal raster zonal-stats` で市町村ごとに集計
+    - 注意：`calc` で NoData を引き継ぐには `--propagate-nodata` と `--nodata` が必要
     - 成果物：市町村別の急傾斜地割合 CSV、傾斜区分図（COG）
 
 === "B. 土地利用と標高"
 
     **問い：** 標高帯ごとに、土地利用の構成はどう違うか？
 
-    - ヒント：DEMを標高帯で区分 → 土地利用メッシュと重ね合わせ → SQLite 方言の SQL で集計
+    - ヒント：`gdal raster reclassify` で標高帯に区分 → `gdal vector rasterize` で土地利用をラスタ化 → `zonal-stats` または SQL で集計
     - 成果物：標高帯×土地利用のクロス集計 CSV
 
 === "C. 観測点の周辺環境"
 
     **問い：** 各気象観測所の周辺（半径1km）は、どんな土地利用・地形か？
 
-    - ヒント：CSV → 点 → 平面直角座標系へ → `ST_Buffer` → 土地利用・DEMを集計
+    - ヒント：`gdal vector make-point` → `reproject` → `buffer --distance 1000`（pipeline でつなげる）→ `gdal raster zonal-stats --zones` で集計
     - 成果物：観測所ごとの周辺環境 CSV
 
 === "D. 自由テーマ"
@@ -44,7 +45,7 @@ flowchart LR
 ```
 
 1. **処理フローを先に紙に描く**（入力 → 処理 → 出力の箱と矢印）
-2. 1ステップずつ、ターミナルで試して `gdalinfo` / `ogrinfo` で確認する
+2. 1ステップずつ、ターミナルで試して `gdal raster info` / `gdal vector info` で確認する
 3. 動いたコマンドをスクリプトに移す
 4. `data/work/` と `data/output/` を消して、`run_all.sh` で再生成できるか確かめる
 5. `git commit` する

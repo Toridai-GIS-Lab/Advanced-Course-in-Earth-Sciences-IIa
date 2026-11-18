@@ -9,7 +9,7 @@
 
 地理空間データの処理を、GUI（マウス操作）ではなく **コマンドライン（CLI）** で行う2日間の集中講義です。
 
-道具は [GDAL/OGR](https://gdal.org/) を中心に使います。GDAL は QGIS・ArcGIS・R（sf / terra）・Python（rasterio / GeoPandas）の内部でも動いている、空間データ処理の「エンジン」です。CLI で GDAL を直接使えるようになると、どのソフトの裏側で何が起きているかが見えるようになります。
+道具は [GDAL](https://gdal.org/) の統一コマンド `gdal`（GDAL 3.11 以降）を中心に使います。GDAL は QGIS・ArcGIS・R（sf / terra）・Python（rasterio / GeoPandas）の内部でも動いている、空間データ処理の「エンジン」です。CLI で GDAL を直接使えるようになると、どのソフトの裏側で何が起きているかが見えるようになります。
 
 ## 到達目標
 
@@ -56,3 +56,10 @@
 ## 講師
 
 岩崎 亘典（鳥取大学 農学部 / OSGeo日本支部）
+
+## ライセンス
+
+- 文章・図：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)
+- コマンド例・スクリプト：[The Unlicense](https://unlicense.org/)（パブリックドメイン）
+
+コマンド例の多くは道具の標準的な使い方であり、著作物には当たらないと考えています。それでも、権利関係を気にせず使えるように、コード部分はパブリックドメインとして提供します。自分の研究にそのまま貼り付けて使ってください。
