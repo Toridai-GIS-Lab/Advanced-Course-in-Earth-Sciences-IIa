@@ -4,7 +4,7 @@ site_author: 岩崎亘典
 site_url: https://toridai-gis-lab.github.io/Advanced-Course-in-Earth-Sciences-IIa/
 repo_url: https://github.com/Toridai-GIS-Lab/Advanced-Course-in-Earth-Sciences-IIa
 docs_dir: docs
-copyright: "&copy; 2026 Nobusuke Iwasaki / The Unlicense"
+copyright: "&copy; 2026 Nobusuke Iwasaki / <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\">CC BY 4.0</a>"
 
 theme:
   name: material
