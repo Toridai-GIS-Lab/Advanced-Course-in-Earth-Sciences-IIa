@@ -65,7 +65,8 @@ nav:
       - コマンド早見表: cheatsheet.md
   - 1日目 CLIによる空間データ処理の基礎:
       - 1. オリエンテーション: day1/01-orientation.md
-      - 2. 環境構築・基本操作: day1/02-basics.md
+      - 2-1. はじめてのターミナル: day1/02-terminal.md
+      - 2-2. データを確かめる: day1/02-basics.md
       - 3. ラスタ・ベクタ処理の基本: day1/03-processing.md
       - 4. ミニ演習: day1/04-exercise.md
   - 2日目 ワークフロー設計と研究応用:
